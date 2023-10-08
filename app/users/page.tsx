@@ -1,11 +1,16 @@
 import React from "react";
 import UserTable from "./UserTable";
 
-const UsersPage = () => {
+interface Props {
+  searchParams: { sortOrder: string };
+}
+
+const UsersPage = ({ searchParams: { sortOrder } }: Props) => {
   return (
     <>
       <h1>UsersPage</h1>
-      <UserTable />
+      
+      <UserTable sortOrder={sortOrder} />
     </>
   );
 };
