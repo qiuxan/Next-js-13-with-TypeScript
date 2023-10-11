@@ -36,3 +36,20 @@ export async function PUT(
 
   return NextResponse.json({ id: 1, name: body.name });
 }
+
+// create a delete function
+export async function DELETE(
+  request: NextRequest,
+  { params }: { params: { id: number } }
+) {
+  //to do:
+  //1, fetch the user from the database with the given id
+  //2, if the user doesn't exist, return a 404 response
+  if (params.id > 10) {
+    //mocking the database
+    return NextResponse.json({ error: "User not found" }, { status: 404 });
+  }
+  //3, delete the user
+  //4, return a 200 response with the deleted user
+  return NextResponse.json({});
+}
