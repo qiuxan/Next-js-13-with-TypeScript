@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import schema from "../schema";
 
 //export a next route function
 export function GET(
@@ -23,8 +24,9 @@ export async function PUT(
   //1. validate the request body
   //2, if invalid, return a 400 response
   const body = await request.json();
-  if (!body.name)
-    return NextResponse.json({ error: "name is requied" }, { status: 400 });
+  const validation = schema.safeParse(body);
+  if (!validation.success)
+    return NextResponse.json(validation.error.errors, { status: 400 });
   //3, fetch the user from the database with the given id
   //4, if the user doesn't exist, return a 404 response
   if (params.id > 10) {
