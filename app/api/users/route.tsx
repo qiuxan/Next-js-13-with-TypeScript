@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import schema from "../schema";
+import schema from "./schema";
 
 export function GET(request: NextRequest) {
   return NextResponse.json(
