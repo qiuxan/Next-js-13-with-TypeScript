@@ -9,3 +9,18 @@ export function GET(request: NextRequest) {
     ]
   );
 }
+export async function POST(request: NextRequest) {
+  const body = await request.json();
+  //Validate
+  //if invalid, return 400
+  //else return
+  if (!body.name) {
+    return NextResponse.json(
+      { error: "Name is required" },
+      {
+        status: 400,
+      }
+    );
+  }
+  return NextResponse.json({ id: 1, nme: body.name }, { status: 201 }); // because 201 is for created status code in http
+}
