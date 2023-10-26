@@ -14,7 +14,10 @@ const NavigationBar = () => {
       {status === "loading" && <div>Loading...</div>}
       {status === "authenticated" && (
         <div>
-          {session?.user?.name} <Link href="/api/auth/signout">Sign Out</Link>
+          {session?.user?.name}
+          <Link className="ml-3" href="/api/auth/signout">
+            Sign Out
+          </Link>
         </div>
       )}
       {status === "unauthenticated" && (
